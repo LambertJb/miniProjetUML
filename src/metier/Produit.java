@@ -10,7 +10,7 @@ public class Produit implements I_Produit{
 	
 	private double tauxTVA = 0.2f;
 	
-	public Produit(String nom, float prixUnitaireHT, int qte)
+	public Produit(String nom, double prixUnitaireHT, int qte)
 	{
 		this.nom = nom;
 		this.prixUnitaireHT = prixUnitaireHT;
