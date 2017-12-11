@@ -54,5 +54,7 @@ public class Produit implements I_Produit{
 		double prixUnitaireTTC = this.getPrixUnitaireTTC();
 		return this.quantiteStock*prixUnitaireTTC;
 	}
+	
+	
 
 }
