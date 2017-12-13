@@ -14,7 +14,7 @@ public class Catalogue implements I_Catalogue {
 
 	@Override
 	public boolean addProduit(I_Produit produit) {
-		if (lesProduits.contains(produit)) {
+		if (!lesProduits.contains(produit)) {
 			lesProduits.add(produit);
 			return true;
 		}
@@ -25,11 +25,7 @@ public class Catalogue implements I_Catalogue {
 	@Override
 	public boolean addProduit(String nom, double prix, int qte) {
 		I_Produit produit = new Produit(nom,prix,qte);
-		if (!lesProduits.contains(produit)) {
-			lesProduits.add(produit);
-			return true;
-		}
-		return false;
+		return addProduit(produit);
 
 	}
 
@@ -47,40 +43,67 @@ public class Catalogue implements I_Catalogue {
 
 	@Override
 	public boolean removeProduit(String nom) {
-		for (Iterator iterator = lesProduits.iterator(); iterator.hasNext();) {
-			I_Produit produit = (I_Produit) iterator.next();
-			if (produit.getNom() == nom){
-				lesProduits.remove(produit);
-				return true;
-			}
+		I_Produit produit = getProduit(nom);
+		if(produit != null){
+			lesProduits.remove(produit);
+			return true;
 		}
 		return false;
 	}
 
 	@Override
 	public boolean acheterStock(String nomProduit, int qteAchetee) {
-		
+		I_Produit produit = getProduit(nomProduit);
+		if (produit != null) {
+			produit.ajouter(qteAchetee);
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean vendreStock(String nomProduit, int qteVendue) {
+		I_Produit produit = getProduit(nomProduit);
+		if (produit != null){
+			produit.enlever(qteVendue);
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public String[] getNomProduits() {
-		return null;
+		String[] tousLesNoms = new String[lesProduits.size()];
+		int index = 0;
+		for (Iterator iterator = lesProduits.iterator(); iterator.hasNext();index++) {
+			I_Produit produit = (I_Produit) iterator.next();
+			tousLesNoms[index] = produit.getNom();
+		}
+		return tousLesNoms;
 	}
 
 	@Override
 	public double getMontantTotalTTC() {
-		return 0;
+		double prix = 0;
+		for (I_Produit produit : lesProduits) {
+			prix += produit.getPrixStockTTC();
+		}
+		return prix;
 	}
 
 	@Override
 	public void clear() {
-
+		lesProduits.clear();
+	}
+	
+	private I_Produit getProduit(String nom) {
+		for (Iterator iterator = lesProduits.iterator(); iterator.hasNext();) {
+			I_Produit produit = (I_Produit) iterator.next();
+			if (produit.getNom() == nom){
+				return produit;
+			}
+		}
+		return null;
 	}
 
 }
