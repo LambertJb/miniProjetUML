@@ -14,11 +14,25 @@ public class Controller_Creation_Suppression {
 	
 	public boolean supprimerProduit(String nomProd) {
 		
-		return catalogue.removeProduit(nomProd);
+		boolean resultat = false;
+		try {
+			resultat = catalogue.removeProduit(nomProd);
+		}
+		catch(NumberFormatException e) {
+			e.printStackTrace();
+		}
+		return resultat;
 	}
 	
-	public boolean ajouterProduit(String nomProd, double prixUnitaireHT, int qte) {
+	public boolean ajouterProduit(String nomProd, String prixUnitaireHT, String qte) {
 		
-		return catalogue.addProduit(nomProd, prixUnitaireHT, qte);
+		boolean resultat = false;
+		try {
+			resultat = catalogue.addProduit(nomProd, Double.parseDouble(prixUnitaireHT), Integer.parseInt(qte));
+		}
+		catch(NumberFormatException e) {
+			e.printStackTrace();
+		}
+		return resultat;
 	}
 }

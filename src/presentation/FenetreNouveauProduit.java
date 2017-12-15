@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import controller.Controller_Creation_Suppression;
+
 public class FenetreNouveauProduit extends JFrame implements ActionListener {
 
 	private JTextField txtPrixHT;
@@ -21,7 +23,7 @@ public class FenetreNouveauProduit extends JFrame implements ActionListener {
 
 		JLabel labNom = new JLabel("Nom produit");
 		JLabel labPrixHT = new JLabel("Prix Hors Taxe");
-		JLabel labQte = new JLabel("Quantité en stock");
+		JLabel labQte = new JLabel("Quantitï¿½ en stock");
 //		JLabel labCategorie = new JLabel("Categorie");
 		contentPane.add(labNom);
 		txtNom = new JTextField(15);
@@ -47,6 +49,8 @@ public class FenetreNouveauProduit extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		Controller_Creation_Suppression controller_creation_suppression = new Controller_Creation_Suppression();
+		controller_creation_suppression.ajouterProduit(txtNom.getText(), txtPrixHT.getText(), txtQte.getText());
 		this.dispose();
 	}
 
