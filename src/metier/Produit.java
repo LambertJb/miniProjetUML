@@ -12,7 +12,7 @@ public class Produit implements I_Produit{
 	
 	public Produit(String nom, double prixUnitaireHT, int qte)
 	{
-		this.nom = nom;
+		this.nom = nom.trim().replace("\t", " ");
 		this.prixUnitaireHT = prixUnitaireHT;
 		this.quantiteStock = qte;
 	}
@@ -46,7 +46,8 @@ public class Produit implements I_Produit{
 
 	@Override
 	public double getPrixUnitaireTTC() {
-		return this.prixUnitaireHT*(1+this.tauxTVA);
+		double d = (this.prixUnitaireHT*(1+this.tauxTVA));
+		return d;
 	}
 
 	@Override
