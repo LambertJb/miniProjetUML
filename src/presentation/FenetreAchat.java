@@ -1,7 +1,10 @@
 package presentation;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import controller.Controller_Achat_Vente;
 
 public class FenetreAchat extends JFrame implements ActionListener {
 
@@ -33,6 +36,9 @@ public class FenetreAchat extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		Controller_Achat_Vente controller = new Controller_Achat_Vente();
+		boolean resultat = controller.acheterArticle(combo.getName(), txtQuantite.getText());
+		if (resultat)
 		this.dispose();
 	}
 
