@@ -7,7 +7,4 @@ public class ControllerInstance {
 
 	public static I_Catalogue catalogue = new Catalogue();
 	
-	
-	
-	
 }
