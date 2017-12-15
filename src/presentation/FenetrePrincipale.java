@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import controller.Controller_Affichage;
 import controller.Controller_Creation_Suppression;
 
 
@@ -75,8 +76,10 @@ public class FenetrePrincipale extends JFrame implements ActionListener,
 /* M�me chose pour tabCategories (partie 4) */ 		
 //		String[] tabCategories = new String[] {"Bio", "Luxe" };
 		
-		if (e.getSource() == btAfficher)
-			new FenetreAffichage("ajourd'hui nous allons faire de la programmation en 5 couches");
+		if (e.getSource() == btAfficher) {
+			Controller_Affichage controller_affichage = new Controller_Affichage();
+			new FenetreAffichage(controller_affichage.affichageCatalogue());
+		}
 		if (e.getSource() == btNouveauProduit)
 //			new FenetreNouveauProduit(tabCategories);
 			new FenetreNouveauProduit();
