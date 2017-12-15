@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import controller.Controller_Achat_Vente;
+
 public class FenetreVente extends JFrame implements ActionListener {
 
 	private JButton btVente;
@@ -31,6 +33,8 @@ public class FenetreVente extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		Controller_Achat_Vente controller = new Controller_Achat_Vente();
+		controller.vendreArticle(combo.getSelectedItem().toString(), txtQuantite.getText());
 		this.dispose();
 	}
 

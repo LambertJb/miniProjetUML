@@ -13,8 +13,17 @@ public class Controller_Achat_Vente {
 		return resultat;
 	}
 
-	public boolean vendreArticle(String nomProduit, int qteVendue) {
-		return ControllerInstance.catalogue.vendreStock(nomProduit, qteVendue);
+	public boolean vendreArticle(String nomProduit, String qteVendue) {
+		boolean resultat = false;
+		try {
+			resultat = ControllerInstance.catalogue.vendreStock(nomProduit, Integer.parseInt(qteVendue));
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		return resultat;
 	}
 
+	public String[] demandeAchats() {
+		return ControllerInstance.catalogue.getNomProduits();
+	}
 }
