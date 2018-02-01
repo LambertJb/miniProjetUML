@@ -1,7 +1,9 @@
 package metier;
 
-public class Produit implements I_Produit {
+import DAO.FactoryDAO;
+import DAO.ProduitDAO;
 
+public class Produit implements I_Produit {
 	
 	private int quantiteStock;
 
@@ -10,11 +12,15 @@ public class Produit implements I_Produit {
 	private double prixUnitaireHT;
 
 	private double tauxTVA = 0.2;
+	
+	private ProduitDAO produitBDD;
 
 	public Produit( String nom, double prixUnitaireHT, int qte) {
+		produitBDD = FactoryDAO.createInstance();
 		this.nom = nom.trim().replace("\t", " ");
 		this.prixUnitaireHT = prixUnitaireHT;
 		this.quantiteStock = qte;
+		produitBDD.create(this);
 	}
 
 	@Override

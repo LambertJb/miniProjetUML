@@ -11,7 +11,8 @@ public class ProduitDAORelationnel implements ProduitDAO {
 	private PreparedStatement pst;
 	private Connection cn;
 	private ResultSet res;
-
+	private static ProduitDAORelationnel instance;
+	
 	private ProduitDAORelationnel() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -92,6 +93,8 @@ public class ProduitDAORelationnel implements ProduitDAO {
 	}
 	
 	public static ProduitDAORelationnel getInstance() {
-		return new ProduitDAORelationnel();
+		if (instance == null) 
+			instance = new ProduitDAORelationnel();
+		return instance;
 	}
 }
