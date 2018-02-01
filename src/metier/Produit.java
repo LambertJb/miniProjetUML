@@ -32,6 +32,12 @@ public class Produit implements I_Produit {
 	@Override
 	public boolean enlever(int qteVendue) {
 		this.quantiteStock = this.quantiteStock - qteVendue;
+		if(this.quantiteStock==0) {
+			this.produitBDD.delete(this.nom);
+		}
+		else {
+			this.produitBDD.update(this);
+		}
 		return true;
 	}
 

@@ -43,11 +43,10 @@ public class ProduitDAORelationnel implements ProduitDAO {
 		List<I_Produit> listeResultat = new ArrayList<I_Produit>();
 		
 		try {
-			String sql = "SELECT id, nom, quantiteStock,prixUnitaireHT FROM Produits";
+			String sql = "SELECT nom, quantiteStock,prixUnitaireHT FROM Produits";
 			pst = cn.prepareStatement(sql);
 			res = pst.executeQuery();
 			while (res.next()) {
-				int id = res.getInt(0);
 				String nom = res.getString(1);
 				double prixHTUnitaire = res.getDouble(2);
 				int quantite = res.getInt(3);
