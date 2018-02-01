@@ -30,7 +30,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		JPanel panQuitter = new JPanel();
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new FlowLayout());
-		btAfficher = new JButton("Quantitï¿½s en stock");
+		btAfficher = new JButton("Quantités en stock");
 		btNouveauProduit = new JButton("Nouveau Produit");
 		btSupprimerProduit = new JButton("Supprimer Produit");
 		// btNouvelleCategorie = new JButton("Nouvelle Categorie");

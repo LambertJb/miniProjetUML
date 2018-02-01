@@ -25,7 +25,7 @@ public class Catalogue implements I_Catalogue {
 	public boolean addProduit(I_Produit produit) {
 		if (produit != null) {
 			if (!lesProduits.contains(produit) && produit.getPrixUnitaireHT() > 0 && produit.getQuantite() >= 0
-					&& getProduit(produit.getNom()) == null) {
+					&& getProduit(produit.getNom()) == null && !nameExist(produit.getNom())) {
 				lesProduits.add(produit);
 				produit.ajouterBDD();
 				return true;
@@ -77,6 +77,15 @@ public class Catalogue implements I_Catalogue {
 		return false;
 	}
 
+	private boolean nameExist(String name) {
+		String[] tabName = getNomProduits();
+		for (String nameExistant : tabName) {
+			if (nameExistant.equals(name)) {
+				return true;
+			}
+		}
+		return false;
+	}
 	@Override
 	public boolean acheterStock(String nomProduit, int qteAchetee) {
 		I_Produit produit = getProduit(nomProduit);
@@ -145,22 +154,23 @@ public class Catalogue implements I_Catalogue {
 
 	@Override
 	public String toString() {
+		mettreAJour();
 		String toString = "";
 		NumberFormat prix = new DecimalFormat("##.00");
 		if (!lesProduits.isEmpty()) {
 			for (I_Produit produit : lesProduits) {
 				toString += produit.getNom() + " - prix HT : "
-						+ prix.format(produit.getPrixUnitaireHT()).replace(".", ",") + " ï¿½ - prix TTC : "
-						+ prix.format(produit.getPrixUnitaireTTC()) + " ï¿½ - quantitï¿½ en stock : "
+						+ prix.format(produit.getPrixUnitaireHT()).replace(".", ",") + " € - prix TTC : "
+						+ prix.format(produit.getPrixUnitaireTTC()) + " € - quantité en stock : "
 						+ produit.getQuantite() + "\n";
 			}
 			toString += "\n";
 			return toString += "Montant total TTC du stock : " + prix.format(getMontantTotalTTC()).replace(".", ",")
-					+ " ï¿½";
+					+ " €";
 		}
 
 		toString += "\n";
-		return toString += "Montant total TTC du stock : 0,00 ï¿½";
+		return toString += "Montant total TTC du stock : 0,00 €";
 
 	}
 

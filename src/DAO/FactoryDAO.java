@@ -2,11 +2,12 @@ package DAO;
 
 public class FactoryDAO {
 	
-	private static ProduitDAO instance;
+	private static ProduitDAO instanceRelationnel;
+	private static ProduitDAO instanceXML;
 	
 	public static ProduitDAO createInstance() {
-		if (instance == null)
-			instance = ProduitDAORelationnel.getInstance();
-		return instance;
+		instanceRelationnel = ProduitDAORelationnel.getInstance();
+		instanceXML = new AdaptateurProduitXML();
+		return instanceXML;
 	}
 }

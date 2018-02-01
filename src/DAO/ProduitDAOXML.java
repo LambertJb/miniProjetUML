@@ -1,20 +1,19 @@
+package DAO;
+
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.lang.model.element.Element;
-import javax.swing.text.Document;
-
-import org.jdom.*;
-import org.jdom.input.*;
-import org.jdom.output.*;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.input.SAXBuilder;
+import org.jdom.output.XMLOutputter;
 
 import metier.I_Produit;
 import metier.Produit;
 
-
 public class ProduitDAOXML {
-	private String uri = "C:/Produits.xml";
+	private String uri = "./Produits.xml";
 	private Document doc;
 
 	public ProduitDAOXML() {
