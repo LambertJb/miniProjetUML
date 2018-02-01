@@ -2,7 +2,6 @@ package metier;
 
 public class Produit implements I_Produit {
 
-	private int id;
 	
 	private int quantiteStock;
 
@@ -13,7 +12,6 @@ public class Produit implements I_Produit {
 	private double tauxTVA = 0.2;
 
 	public Produit( String nom, double prixUnitaireHT, int qte) {
-		this.id = id;
 		this.nom = nom.trim().replace("\t", " ");
 		this.prixUnitaireHT = prixUnitaireHT;
 		this.quantiteStock = qte;

@@ -27,11 +27,10 @@ public class ProduitDAORelationnel implements ProduitDAO {
 		if (p != null) {
 			try {
 				CallableStatement call = cn.prepareCall("{call procedure_insert_produits( ?, ?, ? )}");
-				call.setString(0, p.getNom());
-				call.setInt(1, p.getQuantite());
-				call.setDouble(2, p.getPrixUnitaireHT());
-				call.execute();
-				return true;
+				call.setString(1, p.getNom());
+				call.setInt(2, p.getQuantite());
+				call.setDouble(3, p.getPrixUnitaireHT());
+				return call.execute();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
