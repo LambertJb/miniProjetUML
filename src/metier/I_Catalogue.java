@@ -14,5 +14,6 @@ public interface I_Catalogue {
 	public abstract String toString();
 
 	public abstract void clear();
+	public abstract void mettreAJour();
 
 }

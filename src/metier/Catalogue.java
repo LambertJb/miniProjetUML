@@ -147,17 +147,23 @@ public class Catalogue implements I_Catalogue {
 		if (!lesProduits.isEmpty()) {
 			for (I_Produit produit : lesProduits) {
 				toString += produit.getNom() + " - prix HT : "
-						+ prix.format(produit.getPrixUnitaireHT()).replace(".", ",") + " € - prix TTC : "
-						+ prix.format(produit.getPrixUnitaireTTC()) + " € - quantité en stock : "
+						+ prix.format(produit.getPrixUnitaireHT()).replace(".", ",") + " ï¿½ - prix TTC : "
+						+ prix.format(produit.getPrixUnitaireTTC()) + " ï¿½ - quantitï¿½ en stock : "
 						+ produit.getQuantite() + "\n";
 			}
 			toString += "\n";
 			return toString += "Montant total TTC du stock : " + prix.format(getMontantTotalTTC()).replace(".", ",")
-					+ " €";
+					+ " ï¿½";
 		}
 
 		toString += "\n";
-		return toString += "Montant total TTC du stock : 0,00 €";
+		return toString += "Montant total TTC du stock : 0,00 ï¿½";
 
+	}
+
+	@Override
+	public void mettreAJour() {
+		this.lesProduits = this.produitBDD.read();
+		
 	}
 }

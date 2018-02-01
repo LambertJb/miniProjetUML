@@ -19,7 +19,10 @@ public class Controller_Achat_Vente {
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
+		this.catalogue.mettreAJour();
 		return resultat;
+		
+		
 	}
 
 	public boolean vendreArticle(String nomProduit, String qteVendue) {
@@ -29,6 +32,7 @@ public class Controller_Achat_Vente {
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
+		this.catalogue.mettreAJour();
 		return resultat;
 	}
 

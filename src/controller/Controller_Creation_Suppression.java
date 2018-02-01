@@ -25,6 +25,7 @@ public class Controller_Creation_Suppression {
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
+		this.catalogue.mettreAJour();
 		return resultat;
 	}
 
@@ -36,6 +37,7 @@ public class Controller_Creation_Suppression {
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
+		this.catalogue.mettreAJour();
 		return resultat;
 	}
 }
