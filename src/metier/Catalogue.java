@@ -8,12 +8,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
+import DAO.FactoryDAO;
+import DAO.ProduitDAO;
+
 public class Catalogue implements I_Catalogue {
 
 	private List<I_Produit> lesProduits;
-
+	private ProduitDAO produitBDD;
+	
 	public Catalogue() {
+		produitBDD = FactoryDAO.createInstance();
 		lesProduits = new ArrayList<I_Produit>();
+		lesProduits = produitBDD.read();
 	}
 
 	@Override

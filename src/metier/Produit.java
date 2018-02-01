@@ -26,7 +26,7 @@ public class Produit implements I_Produit {
 	@Override
 	public boolean ajouter(int qteAchetee) {
 		this.quantiteStock += qteAchetee;
-		return true;
+		return produitBDD.update(this);
 	}
 
 	@Override
