@@ -11,9 +11,8 @@ import java.util.Locale;
 public class Catalogue implements I_Catalogue {
 
 	private List<I_Produit> lesProduits;
-	private static Catalogue instance;
 
-	private Catalogue() {
+	public Catalogue() {
 		lesProduits = new ArrayList<I_Produit>();
 	}
 
@@ -133,12 +132,6 @@ public class Catalogue implements I_Catalogue {
 			}
 		}
 		return null;
-	}
-
-	public static Catalogue getInstance() {
-		if (instance == null)
-			return new Catalogue();
-		return instance;
 	}
 
 	@Override

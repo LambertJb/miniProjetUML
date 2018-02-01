@@ -9,7 +9,7 @@ public class Controller_Creation_Suppression {
 	private I_Catalogue catalogue;
 
 	public Controller_Creation_Suppression() {
-		catalogue = Catalogue.getInstance();
+		catalogue = ControllerInstance.createInstance();
 	}
 
 	public String[] demandeSuppression() {

@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import controller.ControllerInstance;
 import metier.*;
 
 public class CatalogueTest {
@@ -16,7 +17,7 @@ public class CatalogueTest {
 
 	@Before
 	public void setUp() {
-		cat = Catalogue.getInstance();
+		cat = ControllerInstance.createInstance();
 		// Si votre Catalogue est un Singleton, il faut changer la ligne
 		// précédente puis vider le Catalogue avec la méthode clear() comme
 		// indiqué à la ligne suivante

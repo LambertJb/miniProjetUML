@@ -8,7 +8,7 @@ public class Controller_Achat_Vente {
 	private I_Catalogue catalogue;
 
 	public Controller_Achat_Vente() {
-		catalogue = Catalogue.getInstance();
+		catalogue = ControllerInstance.createInstance();
 	}
 
 	public boolean acheterArticle(String nomProduit, String qteAchetee) {
