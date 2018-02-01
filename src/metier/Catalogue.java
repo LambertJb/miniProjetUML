@@ -39,18 +39,25 @@ public class Catalogue implements I_Catalogue {
 	}
 
 	@Override
-	public int addProduits(List<I_Produit> l) {
+	public int addProduits(List<I_Produit> list) {
 		int compteur = 0;
-		if (l != null) {
-			for (I_Produit produit : l) {
-				if (!lesProduits.contains(produit) && produit.getPrixUnitaireHT() > 0 && produit.getQuantite() >= 0
-						&& getProduit(produit.getNom()) == null) {
-					lesProduits.add(produit);
+		if (list != null) {
+			for (I_Produit produit : list) {
+				if (testProduit(produit)) {
 					compteur++;
 				}
 			}
 		}
 		return compteur;
+	}
+
+	private boolean testProduit(I_Produit produit) {
+		if (!lesProduits.contains(produit) && produit.getPrixUnitaireHT() > 0 && produit.getQuantite() >= 0
+				&& getProduit(produit.getNom()) == null) {
+			lesProduits.add(produit);
+			return true;
+		}
+		return false;
 	}
 
 	@Override

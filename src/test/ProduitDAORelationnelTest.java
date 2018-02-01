@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import dal.ProduitDAO;
-import dal.ProduitDAORelationnel;
+import DAO.ProduitDAO;
+import DAO.ProduitDAORelationnel;
 import metier.I_Produit;
 import metier.Produit;
 
@@ -16,15 +16,20 @@ public class ProduitDAORelationnelTest {
 
 	@Before
 	public void setUp() {
-		prod = new ProduitDAORelationnel();
+		prod = ProduitDAORelationnel.getInstance();
 	}
-	
-	
+
 	@Test
-	public void test_create(){
-		I_Produit produit1 = new Produit("Bernard", 12.5,12);
-		
-		assertTrue(prod.create(produit1));
+	public void test_create() {
+		I_Produit produit1 = new Produit("Bernard", 12.5, 12);
+
+		assertFalse(prod.create(produit1));
+	}
+
+	@Test
+	public void test_delete() {
+
+		assertFalse(prod.delete("Bernard"));
 	}
 
 }

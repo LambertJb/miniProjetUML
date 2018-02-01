@@ -1,17 +1,19 @@
 package metier;
 
-public class Produit implements I_Produit{
+public class Produit implements I_Produit {
+
+	private int id;
 	
 	private int quantiteStock;
-	
+
 	private String nom;
-	
+
 	private double prixUnitaireHT;
-	
+
 	private double tauxTVA = 0.2;
-	
-	public Produit(String nom, double prixUnitaireHT, int qte)
-	{
+
+	public Produit( String nom, double prixUnitaireHT, int qte) {
+		this.id = id;
 		this.nom = nom.trim().replace("\t", " ");
 		this.prixUnitaireHT = prixUnitaireHT;
 		this.quantiteStock = qte;
@@ -46,16 +48,14 @@ public class Produit implements I_Produit{
 
 	@Override
 	public double getPrixUnitaireTTC() {
-		double d = (this.prixUnitaireHT*(1+this.tauxTVA));
+		double d = (this.prixUnitaireHT * (1 + this.tauxTVA));
 		return d;
 	}
 
 	@Override
 	public double getPrixStockTTC() {
 		double prixUnitaireTTC = this.getPrixUnitaireTTC();
-		return this.quantiteStock*prixUnitaireTTC;
+		return this.quantiteStock * prixUnitaireTTC;
 	}
-	
-	
 
 }
