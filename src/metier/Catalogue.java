@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 
 import DAO.FactoryDAO;
 import DAO.ProduitDAO;
@@ -28,6 +27,7 @@ public class Catalogue implements I_Catalogue {
 			if (!lesProduits.contains(produit) && produit.getPrixUnitaireHT() > 0 && produit.getQuantite() >= 0
 					&& getProduit(produit.getNom()) == null) {
 				lesProduits.add(produit);
+				produit.ajouterBDD();
 				return true;
 			}
 			return false;
@@ -49,6 +49,7 @@ public class Catalogue implements I_Catalogue {
 		if (list != null) {
 			for (I_Produit produit : list) {
 				if (testProduit(produit)) {
+					addProduit(produit);
 					compteur++;
 				}
 			}
@@ -70,6 +71,7 @@ public class Catalogue implements I_Catalogue {
 		I_Produit produit = getProduit(nom);
 		if (produit != null) {
 			lesProduits.remove(produit);
+			produitBDD.delete(nom);
 			return true;
 		}
 		return false;
@@ -81,6 +83,7 @@ public class Catalogue implements I_Catalogue {
 		if (qteAchetee >= 0) {
 			if (produit != null) {
 				if (produit.getQuantite() != 0 && qteAchetee > 0) {
+					System.out.println(qteAchetee);
 					produit.ajouter(qteAchetee);
 					return true;
 				}

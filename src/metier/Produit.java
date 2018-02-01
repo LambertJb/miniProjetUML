@@ -20,13 +20,17 @@ public class Produit implements I_Produit {
 		this.nom = nom.trim().replace("\t", " ");
 		this.prixUnitaireHT = prixUnitaireHT;
 		this.quantiteStock = qte;
-		produitBDD.create(this);
 	}
 
 	@Override
+	public boolean ajouterBDD() {
+		return produitBDD.create(this);
+	}
+	
+	@Override
 	public boolean ajouter(int qteAchetee) {
 		this.quantiteStock += qteAchetee;
-		return produitBDD.update(this);
+		return produitBDD.update(this.getQuantite(), this.getNom());
 	}
 
 	@Override
@@ -36,7 +40,7 @@ public class Produit implements I_Produit {
 			this.produitBDD.delete(this.nom);
 		}
 		else {
-			this.produitBDD.update(this);
+			this.produitBDD.update(this.getQuantite(), this.getNom());
 		}
 		return true;
 	}

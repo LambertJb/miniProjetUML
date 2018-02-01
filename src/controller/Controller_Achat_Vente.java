@@ -15,6 +15,7 @@ public class Controller_Achat_Vente {
 
 		boolean resultat = false;
 		try {
+			System.out.println(Integer.parseInt(qteAchetee));
 			resultat = catalogue.acheterStock(nomProduit, Integer.parseInt(qteAchetee));
 		} catch (NumberFormatException e) {
 			e.printStackTrace();

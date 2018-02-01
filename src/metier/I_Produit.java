@@ -8,6 +8,7 @@ public interface I_Produit {
 	public abstract double getPrixUnitaireHT();
 	public abstract double getPrixUnitaireTTC();
 	public abstract double getPrixStockTTC();
+	public abstract boolean ajouterBDD();
 	public abstract String toString();
 
 }

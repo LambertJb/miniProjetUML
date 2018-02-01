@@ -48,8 +48,8 @@ public class ProduitDAORelationnel implements ProduitDAO {
 			res = pst.executeQuery();
 			while (res.next()) {
 				String nom = res.getString(1);
-				double prixHTUnitaire = res.getDouble(2);
-				int quantite = res.getInt(3);
+				double prixHTUnitaire = res.getDouble(3);
+				int quantite = res.getInt(2);
 				I_Produit produit = new Produit(nom,prixHTUnitaire,quantite);
 				listeResultat.add(produit);
 			}
@@ -60,14 +60,13 @@ public class ProduitDAORelationnel implements ProduitDAO {
 		return null;
 	}
 
-	public boolean update(I_Produit p) {
-		if (p != null) {
-			String sql = "Update Produits SET quantiteStock = :qteStock, prixUnitaireHT = :prixUnitaireHT WHERE nom = :nom";
+	public boolean update(int qte, String nom) {
+		if (qte != 0 && nom != null) {
+			String sql = "Update Produits SET quantiteStock = :qteStock WHERE nom = :nom";
 			try {
 				pst = cn.prepareStatement(sql);
-				pst.setInt(1, p.getQuantite());
-				pst.setDouble(2, p.getPrixUnitaireHT());
-				pst.setString(3, p.getNom());
+				pst.setInt(1, qte);
+				pst.setString(2, nom);
 				return pst.execute();
 			} catch (SQLException e) {
 				e.printStackTrace();
